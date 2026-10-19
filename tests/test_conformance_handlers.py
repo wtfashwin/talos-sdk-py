@@ -10,7 +10,7 @@ from talos_sdk.conformance.runner import run_conformance
 
 @pytest.mark.parametrize(
     ("canonical", "expected_success"),
-    [("{\"a\":1,\"z\":2}", True), ("{\"a\":9,\"z\":2}", False)],
+    [('{"a":1,"z":2}', True), ('{"a":9,"z":2}', False)],
     ids=["valid-canonical-result", "incorrect-canonical-result"],
 )
 def test_conformance_checks_pretty_printed_json(
@@ -20,7 +20,7 @@ def test_conformance_checks_pretty_printed_json(
     vector_path.write_text(
         json.dumps(
             {
-                "inputs": {"pretty_printed": "{\n  \"z\": 2,\n  \"a\": 1\n}"},
+                "inputs": {"pretty_printed": '{\n  "z": 2,\n  "a": 1\n}'},
                 "expected": {"canonical": canonical},
             }
         ),
